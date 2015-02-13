@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{F2C85C19-CD3D-B577-F17A-108AE57664C5}</ProjectGuid>
+	<ProjectGuid>{914790BF-748F-7CB8-4067-9B9AA8660350}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -58,8 +58,6 @@
      <Compile Include="Assets\Scripts\Structure\GlobalAdmin.cs" />
      <Compile Include="Assets\Scripts\Structure\LivingAreaSettings.cs" />
      <None Include="Assets\Sources.txt" />
-     <None Include="Assets\Models\Bushes\readme.txt" />
-     <None Include="Assets\Models\Plants\readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
