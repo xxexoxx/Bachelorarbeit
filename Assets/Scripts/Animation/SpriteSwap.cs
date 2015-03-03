@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpriteSwap : MonoBehaviour {
+public class SpriteSwap : MonoBehaviour, IAnimation {
 
     // Public Variables
     public Sprite AudiovisualEffectOn, AudiovisualEffectOff;

@@ -1,26 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum GameMenuStates { MainMenu, TreeMenu, SettingsMenu, DetailsTree};
+
 public class GameMenu : MonoBehaviour {
 
-    // Public Variables
-    public GameObject MenuRestartGame;
+	// Public Variables
+    public GameObject PlantTree, SettingsMenu, NextYearButton;
 
-    // Open restart game dialog
-    public void OpenRestartGameDialog()
+    // Private Variables
+    private Planet PlanetScript;
+
+    void Start()
     {
-        MenuRestartGame.SetActive(true);
-    }
-    // Close restart game dialog
-    public void CloseRestartGameDialog()
-    {
-        MenuRestartGame.SetActive(false);
+        PlanetScript = GameObject.Find(Planet.GetPlanetName()).GetComponent<Planet>();
     }
 
-    // Restart game
-    public void RestartGame()
+    // Change UI LAyout
+    public void ChangeMenu(GameMenuStates menu)
     {
-        Resources.UnloadUnusedAssets();
-        Application.LoadLevel(0);
+        switch (menu)
+        {
+            case GameMenuStates.MainMenu:
+                PlanetScript.SetCanControl(true);
+                PlantTree.SetActive(true);
+                SettingsMenu.SetActive(true);
+                NextYearButton.SetActive(true);
+                break;
+            case GameMenuStates.TreeMenu:
+                PlanetScript.SetCanControl(false);
+                SettingsMenu.SetActive(false);
+                NextYearButton.SetActive(false);
+                break;
+            case GameMenuStates.SettingsMenu:
+                PlanetScript.SetCanControl(false);
+                PlantTree.SetActive(false);
+                NextYearButton.SetActive(false);
+                break;
+            case GameMenuStates.DetailsTree:
+                PlanetScript.SetCanControl(false);
+                PlantTree.SetActive(false);
+                SettingsMenu.SetActive(false);
+                NextYearButton.SetActive(false);
+                break;
+        }
     }
+
 }

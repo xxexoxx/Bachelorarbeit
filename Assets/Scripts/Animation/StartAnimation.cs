@@ -4,12 +4,12 @@ using System.Collections;
 public class StartAnimation : MonoBehaviour {
 
     // private Variables
-    private GlobalAdmin GlobalAdminScript;
+    private Planet PlanetScript;
 
     void Start()
     {
-        GlobalAdminScript = GameObject.Find("GlobalAdmin").GetComponent<GlobalAdmin>();
-        GlobalAdminScript.AddAnimationObject(gameObject);
+        PlanetScript = GameObject.Find(Planet.GetPlanetName()).GetComponent<Planet>();
+        PlanetScript.AddAnimationObject(this);
     }
 
     public void StartAllAnimations(AudiovisualEffects TypeOfAudiovisualEffects)

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RotationAnimation : MonoBehaviour {
+public class RotationAnimation : MonoBehaviour, IAnimation {
 
     // Public Variables
     public float rotationSpeed;

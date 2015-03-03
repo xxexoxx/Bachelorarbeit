@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DestroyAnimation : MonoBehaviour {
+public class DestroyAnimation : MonoBehaviour, IAnimation {
 
     public void Animate(AudiovisualEffects TypeOfAudiovisualEffects)
     {

@@ -4,11 +4,11 @@ using System.Collections;
 public class ChoseEffectIntensity : MonoBehaviour {
 
     // private Variables
-    private GlobalAdmin GlobalAdminScript;
+    private Planet PlanetScript;
 
 	// Use this for initialization
 	void Start () {
-        GlobalAdminScript = GameObject.Find("GlobalAdmin").GetComponent<GlobalAdmin>();
+        PlanetScript = GameObject.Find(Planet.GetPlanetName()).GetComponent<Planet>();
 	}
 
     // Set effect Intensity
@@ -25,9 +25,9 @@ public class ChoseEffectIntensity : MonoBehaviour {
         }
 
         // Set effect intensity
-        GlobalAdminScript.SetEffectIntensity(tmpIntensity, true);
+        PlanetScript.SetEffectIntensity(tmpIntensity, true);
         // Activate in game controls
-        GlobalAdminScript.SetCanControl(true);
+        PlanetScript.SetCanControl(true);
 
         // Disable the effect intensity menu
         gameObject.SetActive(false);

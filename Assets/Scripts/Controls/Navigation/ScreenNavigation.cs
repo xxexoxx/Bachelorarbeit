@@ -10,7 +10,7 @@ public class ScreenNavigation : MonoBehaviour {
     public Camera MainCamera;
 
     // Private Variables
-    private GlobalAdmin GlobalAdminScript;
+    private Planet PlanetScript;
 
     // Zoom
     private Vector2 fingerPos1, fingerPos2;
@@ -26,7 +26,7 @@ public class ScreenNavigation : MonoBehaviour {
 	void Start () {
 	
         // General
-        GlobalAdminScript = GameObject.Find("GlobalAdmin").GetComponent<GlobalAdmin>();
+        PlanetScript = GameObject.Find(Planet.GetPlanetName()).GetComponent<Planet>();
 
         // Zoom
         fingerPos1 = Vector2.zero;
@@ -43,7 +43,7 @@ public class ScreenNavigation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (GlobalAdminScript.GetCanControl())
+        if (PlanetScript.GetCanControl())
         {
             // Zooming with two fingers
             ScreenZoom();
@@ -204,6 +204,5 @@ public class ScreenNavigation : MonoBehaviour {
     }
 
     #endregion Turning
-
 
 }
