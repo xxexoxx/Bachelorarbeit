@@ -17,7 +17,7 @@ public class GameMenu : MonoBehaviour {
     }
 
     // Change UI LAyout
-    public void ChangeMenu(GameMenuStates menu)
+    public void ChangeMenu(GameMenuStates menu, bool canControl = false)
     {
         switch (menu)
         {
@@ -28,17 +28,17 @@ public class GameMenu : MonoBehaviour {
                 NextYearButton.SetActive(true);
                 break;
             case GameMenuStates.TreeMenu:
-                PlanetScript.SetCanControl(false);
+                PlanetScript.SetCanControl(canControl);
                 SettingsMenu.SetActive(false);
                 NextYearButton.SetActive(false);
                 break;
             case GameMenuStates.SettingsMenu:
-                PlanetScript.SetCanControl(false);
+                PlanetScript.SetCanControl(canControl);
                 PlantTree.SetActive(false);
                 NextYearButton.SetActive(false);
                 break;
             case GameMenuStates.DetailsTree:
-                PlanetScript.SetCanControl(false);
+                PlanetScript.SetCanControl(canControl);
                 PlantTree.SetActive(false);
                 SettingsMenu.SetActive(false);
                 NextYearButton.SetActive(false);

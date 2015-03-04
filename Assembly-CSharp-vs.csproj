@@ -46,21 +46,29 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Animation\Cloud.cs" />
+     <Compile Include="Assets\Scripts\Animation\CloudGenerator.cs" />
      <Compile Include="Assets\Scripts\Animation\DestroyAnimation.cs" />
+     <Compile Include="Assets\Scripts\Animation\DestroyChanceAnimation.cs" />
+     <Compile Include="Assets\Scripts\Animation\HorizontalSwitchAnimation.cs" />
+     <Compile Include="Assets\Scripts\Animation\PlayClip.cs" />
      <Compile Include="Assets\Scripts\Animation\RotationAnimation.cs" />
      <Compile Include="Assets\Scripts\Animation\SpriteSwap.cs" />
      <Compile Include="Assets\Scripts\Animation\StartAnimation.cs" />
+     <Compile Include="Assets\Scripts\Animation\ZoneAnimation.cs" />
      <Compile Include="Assets\Scripts\Controls\Menu\ChoseEffectIntensity.cs" />
      <Compile Include="Assets\Scripts\Controls\Menu\DetailsMenu.cs" />
      <Compile Include="Assets\Scripts\Controls\Menu\GameMenu.cs" />
      <Compile Include="Assets\Scripts\Controls\Menu\NextYear.cs" />
      <Compile Include="Assets\Scripts\Controls\Menu\SettingsMenu.cs" />
      <Compile Include="Assets\Scripts\Controls\Menu\TreeMenu.cs" />
+     <Compile Include="Assets\Scripts\Controls\Menu\WinLose.cs" />
      <Compile Include="Assets\Scripts\Controls\Navigation\ScreenNavigation.cs" />
      <Compile Include="Assets\Scripts\Objects\LivingArea.cs" />
      <Compile Include="Assets\Scripts\Objects\MovableTreeIcon.cs" />
      <Compile Include="Assets\Scripts\Objects\Planet.cs" />
      <Compile Include="Assets\Scripts\Objects\TreeObject.cs" />
+     <Compile Include="Assets\Scripts\Structure\AudioController.cs" />
      <Compile Include="Assets\Scripts\Structure\Global.cs" />
      <Compile Include="Assets\Scripts\Structure\Interfaces.cs" />
      <Compile Include="Assets\Scripts\Structure\LivingAreaSettings.cs" />

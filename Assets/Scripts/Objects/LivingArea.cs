@@ -180,4 +180,14 @@ public class LivingArea : MonoBehaviour {
         }
     }
 
+    public bool GetCity()
+    {
+        return currentCity;
+    }
+
+    public string GetZone()
+    {
+        return currentZone;
+    }
+
 }

@@ -9,7 +9,6 @@ public class RotationAnimation : MonoBehaviour, IAnimation {
     // private Variables
     private bool animationActive;
 
-	// Use this for initialization
     public void Animate(AudiovisualEffects TypeOfAudiovisualEffects)
     {
         if (TypeOfAudiovisualEffects == AudiovisualEffects.On)

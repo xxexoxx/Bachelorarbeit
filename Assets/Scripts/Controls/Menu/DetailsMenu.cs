@@ -11,7 +11,6 @@ public class DetailsMenu : MonoBehaviour {
 
     // Private Veriables
     private GameObject LivingArea;
-    private Global GlobalScript;
 
 
 	public void UpdateDetails(GameObject LA)

@@ -6,6 +6,7 @@ public class TreeObject : MonoBehaviour {
     // Public Variables
     public SpriteRenderer Smiley;
     public Sprite SmileyHappy, SmileyNeutral, SmileySad;
+    public AnimationClip plantAnimation, growAnimation;
 
     // Private Variables
     private TreeSettings tree;
@@ -16,8 +17,13 @@ public class TreeObject : MonoBehaviour {
     public void Initialize(TreeSettings tmpTree)
     {
         tree = tmpTree;
-        gameObject.SetActive(true);
+        gameObject.renderer.enabled = true;
+        Smiley.renderer.enabled = true;
+        Smiley.sprite = SmileyNeutral;
         GetComponent<SpriteRenderer>().sprite = tree.Planted;
+
+        PlayAnimation(plantAnimation);
+        PlaySound(SoundTypes.PlantTreeSuccess);
     }
 
     // Remove tree
@@ -25,7 +31,9 @@ public class TreeObject : MonoBehaviour {
     {
         tree = null;
         evaluated = false;
-        gameObject.SetActive(false);
+        gameObject.renderer.enabled = false;
+        Smiley.renderer.enabled = false;
+        PlaySound(SoundTypes.RemoveTree);
     }
 
     public TreeSettings GetTree()
@@ -126,13 +134,14 @@ public class TreeObject : MonoBehaviour {
         {
             evaluated = true;
             tmpEnergy = tree.energyReward;
+            PlayAnimation(growAnimation);
         }
 
         switch (value)
         {
             case EvaluationResult.Happy:
                 GetComponent<SpriteRenderer>().sprite = tree.FullyGrown;
-                Smiley.sprite = SmileyHappy;
+                Smiley.sprite = SmileyHappy;    
                 return new float[] { tree.greenMeter, tmpEnergy };
             case EvaluationResult.Neutral:
                 GetComponent<SpriteRenderer>().sprite = tree.FullyGrown;
@@ -145,5 +154,25 @@ public class TreeObject : MonoBehaviour {
         }
 
         return new float[] { 0, 0 };
+    }
+
+    private void PlayAnimation(AnimationClip clip)
+    {
+        if (GameObject.Find(Planet.GetPlanetName()).GetComponent<Planet>().GetEffectIntensity() == AudiovisualEffects.On)
+        {
+            Animation anim = GetComponent<Animation>();
+
+            anim.clip = clip;
+            anim.Play();
+        } 
+    }
+
+    private void PlaySound(SoundTypes type)
+    {
+        GameObject tmpPlanet = GameObject.Find(Planet.GetPlanetName());
+        if (tmpPlanet.GetComponent<Planet>().GetEffectIntensity() == AudiovisualEffects.On)
+        {
+            tmpPlanet.GetComponent<AudioController>().PlaySound(type);
+        } 
     }
 }

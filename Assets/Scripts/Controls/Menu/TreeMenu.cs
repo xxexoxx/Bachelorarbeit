@@ -30,9 +30,12 @@ public class TreeMenu : MonoBehaviour {
     }
 
     // Close the tree menu
-    public void CloseTreeMenu()
+    public void CloseTreeMenu(bool reset = true)
     {
-        GameMenu.GetComponent<GameMenu>().ChangeMenu(GameMenuStates.MainMenu);
+        if (reset)
+        {
+            GameMenu.GetComponent<GameMenu>().ChangeMenu(GameMenuStates.MainMenu);
+        }
         TreeListMenu.SetActive(false);
     }
 
@@ -53,12 +56,14 @@ public class TreeMenu : MonoBehaviour {
     {
         if (PlanetScript.ReduceEnergy(currentTree.energyCost))
         {
+            GameMenu.GetComponent<GameMenu>().ChangeMenu(GameMenuStates.DetailsTree, true);
+
             GameObject tmpObj = (GameObject)Instantiate(PrefabMovableTreeIcon);
             tmpObj.transform.position = (Vector2)PlanetScript.gameObject.transform.position + new Vector2(0, 7);
             tmpObj.transform.parent = PlanetScript.transform;
-            tmpObj.GetComponent<MovableTreeIcon>().Initialize(currentTree);
+            tmpObj.GetComponent<MovableTreeIcon>().Initialize(currentTree, GameMenu);
 
-            CloseTreeMenu();
+            CloseTreeMenu(false);
         }
     }
 

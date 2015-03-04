@@ -11,6 +11,7 @@ public class MovableTreeIcon : MonoBehaviour {
     private bool movingTree;
     private TreeSettings tree;
     private Planet PlanetScript;
+    private GameObject GameMenuGO;
 
 	// Use this for initialization
 	void Start () {
@@ -19,10 +20,10 @@ public class MovableTreeIcon : MonoBehaviour {
         movingTree = false;
 	}
 
-    public void Initialize(TreeSettings tmpTree)
+    public void Initialize(TreeSettings tmpTree, GameObject obj)
     {
         tree = tmpTree;
-
+        GameMenuGO = obj;
         TreeIconRenderer.sprite = tree.FullyGrown;
     }
 	
@@ -56,12 +57,14 @@ public class MovableTreeIcon : MonoBehaviour {
                 {
                     transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 
-                    /*Vector3 source = transform.position;
+                    /*Vector3 source = transform.localPosition;
                     Vector3 target = PlanetGO.transform.position;
 
                     float angle = Mathf.DeltaAngle(Mathf.Atan2(source.y, source.x) * Mathf.Rad2Deg, Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg);
 
                     transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, -angle - 180);*/
+
+                    //transform.eulerAngles = new Vector3(0, 0, 0);
                 }
             }
 
@@ -82,17 +85,15 @@ public class MovableTreeIcon : MonoBehaviour {
                                 // Returns if a tree exists in that living area
                                 if (!hit[i].collider.GetComponent<LivingArea>().PlantTree(tree))
                                 {
+                                    GameMenuGO.GetComponent<GameMenu>().ChangeMenu(GameMenuStates.MainMenu);
                                     Destroy(gameObject);
                                 }
                                 else
                                 {
-                                    transform.position = PlanetGO.transform.position + transform.localPosition.normalized * 7;
-                                }
-                            }
+                                    transform.position = PlanetGO.transform.position + (-PlanetGO.transform.position + transform.position).normalized * 7;
 
-                            if (hit[i].collider.tag == "TreeTrash")
-                            {
-                                Destroy(gameObject);
+                                    PlanetGO.GetComponent<AudioController>().PlaySound(SoundTypes.PlantTreeFail);
+                                }
                             }
                             
                         }

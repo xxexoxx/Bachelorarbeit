@@ -145,6 +145,11 @@ public class Planet : MonoBehaviour {
         UpdateGreenEnergy();
     }
 
+    public float GetGreenMeter()
+    {
+        return greenMeter;
+    }
+
     void UpdateGreenEnergy()
     {
         greenMeterUI.text = greenMeter.ToString() + "%";

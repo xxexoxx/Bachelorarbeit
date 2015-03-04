@@ -25,4 +25,10 @@ public class SettingsMenu : MonoBehaviour {
         Resources.UnloadUnusedAssets();
         Application.LoadLevel(0);
     }
+
+    // End game
+    public void CloseApp()
+    {
+        Application.Quit();
+    }
 }

@@ -1,3 +1,14 @@
 Visuals:
 
 Lava01, http://pincerdesign.deviantart.com/art/Lava-Texture-Tutorial-400122269
+Frog, https://openclipart.org/detail/496/TheresaKnott-frog-by-TheresaKnott
+Car, https://openclipart.org/detail/4454/Chrisdesign-Beetle-car-by-Chrisdesign
+Plane, https://openclipart.org/detail/74371/plane-by-russel
+Rabbit, https://openclipart.org/detail/188698/1384316344-by-PolyLingua
+Sun, https://openclipart.org/detail/176488/1364063978-by-purzen
+Deer, https://openclipart.org/detail/3412/freedo-Fawn-by-freedo
+Cloud, https://openclipart.org/detail/28302/jean-victor-balin-cloud-by-jean_victor_balin
+
+
+Sounds:
+
