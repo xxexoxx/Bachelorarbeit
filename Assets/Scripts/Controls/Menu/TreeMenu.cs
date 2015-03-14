@@ -15,10 +15,13 @@ public class TreeMenu : MonoBehaviour {
     // private Variables
     private Planet PlanetScript;
     private TreeSettings currentTree;
+    private int currentID;
 
     void Start()
     {
         PlanetScript = GameObject.Find(Planet.GetPlanetName()).GetComponent<Planet>();
+        currentID = 0;
+
         UpdateDetail(0);
     }
 
@@ -26,6 +29,7 @@ public class TreeMenu : MonoBehaviour {
     public void OpenTreeMenu()
     {
         GameMenu.GetComponent<GameMenu>().ChangeMenu(GameMenuStates.TreeMenu);
+        UpdateDetail(currentID);
         TreeListMenu.SetActive(true);
     }
 
@@ -42,10 +46,20 @@ public class TreeMenu : MonoBehaviour {
     // Change Detail part
     public void UpdateDetail(int id)
     {
+        currentID = id;
+
         currentTree = PlanetScript.GetTreeById(id);
 
         DetailTreeImage.sprite = currentTree.FullyGrown;
+
+        Color tmpColor = Color.black;
+        if (PlanetScript.GetEnergy() < currentTree.energyCost)
+        {
+            tmpColor = Color.red;
+        }
         DetailEnergy.text = currentTree.energyCost.ToString();
+        DetailEnergy.color = tmpColor;
+
         DetailGreenMeter.text = currentTree.greenMeter.ToString() + "%";
         DetailEnglishName.text = currentTree.englishName;
         DetailLatinName.text = currentTree.latinName;

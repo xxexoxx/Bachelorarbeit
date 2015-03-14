@@ -109,6 +109,11 @@ public class Planet : MonoBehaviour {
     }
     #endregion
 
+    public float GetEnergy()
+    {
+        return energyBar;
+    }
+
     public void IncreaseEnergy(int value)
     {
         energyBar += value;

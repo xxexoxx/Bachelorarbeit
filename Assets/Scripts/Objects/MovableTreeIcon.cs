@@ -12,6 +12,7 @@ public class MovableTreeIcon : MonoBehaviour {
     private TreeSettings tree;
     private Planet PlanetScript;
     private GameObject GameMenuGO;
+    private GameObject SelectedLivingArea;
 
 	// Use this for initialization
 	void Start () {
@@ -65,6 +66,38 @@ public class MovableTreeIcon : MonoBehaviour {
                     transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, -angle - 180);*/
 
                     //transform.eulerAngles = new Vector3(0, 0, 0);
+
+
+                    // Highlighting living area if movable tree icon above it
+                    RaycastHit2D[] hit = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position), new Vector3(0, 0, 1));
+                    
+                    if (hit.Length > 0)
+                    {
+                        bool tmpLA = false;
+                        for (int i = 0; i < hit.Length; i++)
+                        {
+                            if (hit[i].collider.tag == "LivingArea")
+                            {
+                                tmpLA = true;
+
+                                if (SelectedLivingArea != hit[i].transform.gameObject)
+                                {
+                                    UnhighlightLivingArea();
+                                    SelectedLivingArea = hit[i].transform.gameObject;
+                                    SelectedLivingArea.GetComponent<LivingArea>().HighlightArea(true);
+                                }
+                            }
+                        }
+
+                        if (!tmpLA)
+                        {
+                            UnhighlightLivingArea();
+                        }
+                    }
+                    else
+                    {
+                        UnhighlightLivingArea();
+                    }
                 }
             }
 
@@ -102,7 +135,17 @@ public class MovableTreeIcon : MonoBehaviour {
 
                 collider2D.enabled = true;
                 movingTree = false;
+                UnhighlightLivingArea();
             }
+        }
+    }
+
+    void UnhighlightLivingArea()
+    {
+        if (SelectedLivingArea != null)
+        {
+            SelectedLivingArea.GetComponent<LivingArea>().HighlightArea(false);
+            SelectedLivingArea = null;
         }
     }
 }

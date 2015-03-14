@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class LivingArea : MonoBehaviour {
 
     // Public Variables
-    public SpriteRenderer LightRenderer, CityRenderer, ZoneRenderer, HumidityRenderer, PhValueRenderer;
+    public SpriteRenderer LightRenderer, CityRenderer, ZoneRenderer, HumidityRenderer, PhValueRenderer, SectionRenderer;
     public GameObject TreeGO;
 
     // Private Variables
@@ -19,12 +20,13 @@ public class LivingArea : MonoBehaviour {
     private bool treeExists;
     private GameObject SelectedGameObject;
     private Global GlobalScript;
+    private Color standardSliceColor;
 
     void Start()
     {
         PlanetScript = GameObject.Find(Planet.GetPlanetName()).GetComponent<Planet>();
         GlobalScript = GameObject.Find(Planet.GetPlanetName()).GetComponent<Global>();
-
+        standardSliceColor = SectionRenderer.color;
         if (PlanetScript != null)
         {
             // Initialize LivingArea
@@ -137,7 +139,7 @@ public class LivingArea : MonoBehaviour {
                 {
                     for (int i = 0; i < hit.Length; i++)
                     {
-                        if (hit[i].collider.tag == "LivingArea")
+                        if (hit[i].collider.tag == "LivingArea" && GlobalScript.GetEventSystem().currentSelectedObject == null)
                         {
                             SelectedGameObject = hit[i].transform.gameObject;
                         }
@@ -174,9 +176,23 @@ public class LivingArea : MonoBehaviour {
                         }
                     }
                 }
-
+                SelectedGameObject = null;
                 movedFlag = false;
             }
+        }
+    }
+
+    public void HighlightArea(bool highlight)
+    {
+        if (highlight)
+        {
+            SectionRenderer.color = new Color(1,0.5f,0, 1);
+            SectionRenderer.sortingLayerName = "Tree";
+        }
+        else
+        {
+            SectionRenderer.color = standardSliceColor;
+            SectionRenderer.sortingLayerName = "LivingArea";
         }
     }
 

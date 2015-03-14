@@ -50,7 +50,7 @@ public class TreeObject : MonoBehaviour {
     public float[] EvaluateTree(string light, bool city, string zone, string humidity, string phvalue)
     {
 
-        float properLA = 0;
+        int properLA = 0;
         int maxValue = 4;
 
         if (tree != null)
@@ -105,15 +105,15 @@ public class TreeObject : MonoBehaviour {
                     break;
                 }
             }
-
+            print("rgerg: " + ((float)properLA / maxValue));
             // Evaluation
-            if (properLA / maxValue == 1f)
+            if (properLA / maxValue == 1)
             {
                 return EvaluationReward(EvaluationResult.Happy);
             }
             else
             {
-                if (properLA / maxValue >= 0.5f)
+                if ((float)properLA / maxValue > 0.5f)
                 {
                     return EvaluationReward(EvaluationResult.Neutral);
                 }  

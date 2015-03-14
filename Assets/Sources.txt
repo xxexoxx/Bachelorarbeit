@@ -12,3 +12,8 @@ Cloud, https://openclipart.org/detail/28302/jean-victor-balin-cloud-by-jean_vict
 
 Sounds:
 
+PlantTreeSuccess, https://www.freesound.org/people/fins/sounds/171671/
+PlantTreeFail, https://www.freesound.org/people/Autistic%20Lucario/sounds/142608/
+RemoveTree, https://www.freesound.org/people/kwahmah_02/sounds/250260/
+NextYear, https://www.freesound.org/people/lonce/sounds/200995/
+ButtonClick, https://www.freesound.org/people/fins/sounds/146721/
